@@ -177,18 +177,18 @@ pub fn events_loop() {
         std::thread::sleep(std::time::Duration::from_secs(10));
         let mut event_queue_lock = lock_write(&EVENT_QUEUE);
         while let Some(event) = (*event_queue_lock).pop() {
-            let host = "https://my-project-1511972643240-default-rtdb.firebaseio.com";
-            let path = format!(
-                "/event/{}/device/{}/{}.json",
-                event.event_name, event.device_id, event.event_time
-            );
-
-            let url = format!("{host}{path}");
-            minreq::post(url)
-                .with_json(&event)
-                .expect("Failed to send info to firebase")
-                .send()
-                .ok();
+//             let host = "https://my-project-1511972643240-default-rtdb.firebaseio.com";
+//             let path = format!(
+//                 "/event/{}/device/{}/{}.json",
+//                 event.event_name, event.device_id, event.event_time
+//             );
+//
+//             let url = format!("{host}{path}");
+//             minreq::post(url)
+//                 .with_json(&event)
+//                 .expect("Failed to send info to firebase")
+//                 .send()
+//                 .ok();
         }
         drop(event_queue_lock);
     }

@@ -122,18 +122,7 @@ pub fn main() {
         .unwrap();
     let _result = data_loader.join();
 
-    if !is_emulator() {
-        info!("Performing version check...");
-        let _updater = std::thread::Builder::new()
-            .stack_size(0x80000)
-            .spawn(move || {
-                release::perform_version_check();
-            })
-            .unwrap();
-        let _result = _updater.join();
-    } else {
-        info!("Skipping version check because we are using an emulator");
-    }
+    info!("Skipping version check because this fork is trying not to crash (Icedude907)");
 
     notification("Training Modpack".to_string(), "Welcome!".to_string(), 60);
     notification(
